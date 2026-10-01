@@ -138,12 +138,7 @@ export default function HeroSection() {
             </div>
 
             <div className="mt-4 sm:mt-0 ml-0 sm:ml-auto flex items-center gap-4">
-              <Link
-                href="/dashboard"
-                className="inline-flex items-center justify-center px-8 py-5 bg-white/10 text-white rounded-pill font-sans font-extrabold text-[13px] uppercase tracking-wider hover:bg-white/20 active:scale-95 transition-all backdrop-blur-sm border border-white/20"
-              >
-                Athlete Portal
-              </Link>
+
               <Link
                 href="/register"
                 className="inline-flex items-center justify-center px-10 py-5 bg-gold text-royal-night rounded-pill font-sans font-extrabold text-[15px] uppercase tracking-wider hover:bg-cream active:scale-95 transition-all shadow-gold"
@@ -168,7 +163,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
           >
-            <div className="relative w-full h-full pb-8">
+            <div className="relative w-full aspect-[4/5] md:aspect-[3/4] pb-8">
               <Image 
                 src={currentMode.athlete} 
                 alt={`${currentMode.label} athlete`}

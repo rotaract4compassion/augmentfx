@@ -9,7 +9,7 @@ export default function ParticipantLayout({
 }) {
   return (
     <ParticipantThemeProvider>
-      <div className="participant-shell min-h-dvh overflow-hidden bg-sand text-navy transition-colors duration-200">
+      <div className="participant-shell min-h-dvh overflow-hidden bg-cream text-royal-night transition-colors duration-200">
         <DesktopNav />
 
         <main className="relative min-h-dvh overflow-x-hidden overflow-y-auto pb-[82px] pt-[60px] lg:h-dvh lg:pb-0 lg:pl-[228px] lg:pt-[72px]">
@@ -23,3 +23,4 @@ export default function ParticipantLayout({
     </ParticipantThemeProvider>
   )
 }
+

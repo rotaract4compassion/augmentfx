@@ -33,14 +33,14 @@ interface Errors {
 
 // ── Styles ────────────────────────────────────────────────────────────────────
 const inp = [
-  'w-full bg-white border-[1.5px] border-[#0D1B3D]/[.12] rounded-[12px]',
-  'px-4 py-[15px] font-sans text-body text-[#0D1B3D]',
-  'placeholder:text-[#0D1B3D]/30',
-  'focus:outline-none focus:border-[#9F2B68] focus:ring-4 focus:ring-[#9F2B68]/10',
+  'w-full bg-white border-[1.5px] border-royal-night/[.12] rounded-[12px]',
+  'px-4 py-[15px] font-sans text-body text-royal-night',
+  'placeholder:text-royal-night/30',
+  'focus:outline-none focus:border-gold focus:ring-4 focus:ring-gold/10',
   'transition-all duration-200',
 ].join(' ')
 
-const lbl = 'block font-num font-extrabold text-[10px] text-[#0D1B3D]/55 uppercase tracking-[.08em] mb-[9px]'
+const lbl = 'block font-num font-extrabold text-[10px] text-royal-night/55 uppercase tracking-[.08em] mb-[9px]'
 
 export default function DetailsStep({
   data,
@@ -84,10 +84,10 @@ export default function DetailsStep({
   return (
     <div className="animate-fade-up">
 
-      <h2 className="font-serif text-[32px] font-bold italic text-[#0D1B3D] leading-[1.08] tracking-[-0.02em] mb-[6px]">
+      <h2 className="font-serif text-[32px] font-bold italic text-royal-night leading-[1.08] tracking-[-0.02em] mb-[6px]">
         Your details.
       </h2>
-      <p className="font-sans text-[13px] text-[#0D1B3D]/55 mb-[26px] leading-relaxed">
+      <p className="font-sans text-[13px] text-royal-night/55 mb-[26px] leading-relaxed">
         Create your Tour de Dar account. It&apos;s free.
       </p>
 
@@ -127,8 +127,8 @@ export default function DetailsStep({
         <div className="flex gap-2">
           <div className={cn(
             'flex items-center px-[14px] rounded-[12px] flex-shrink-0',
-            'bg-[#3F78B5]/[.07] border-[1.5px] border-[#3F78B5]/[.14]',
-            'font-sans text-body text-[#0D1B3D]/55 select-none',
+            'bg-royal/[.07] border-[1.5px] border-royal/[.14]',
+            'font-sans text-body text-royal-night/55 select-none',
           )}>
             +255
           </div>
@@ -163,8 +163,8 @@ export default function DetailsStep({
             type="button"
             onClick={() => setShowPass(p => !p)}
             className="absolute right-4 top-1/2 -translate-y-1/2
-                       font-num font-bold text-[11px] text-[#3F78B5]/70
-                       hover:text-[#0D1B3D] transition-colors duration-200
+                       font-num font-bold text-[11px] text-royal/70
+                       hover:text-royal-night transition-colors duration-200
                        focus:outline-none tracking-[.05em]"
           >
             {showPass ? 'HIDE' : 'SHOW'}
@@ -185,9 +185,9 @@ export default function DetailsStep({
         onClick={handleNext}
         disabled={loading}
         className={cn(
-          'mt-6 w-full bg-[#FFC62E] text-[#0D1B3D] font-sans text-[14px] font-extrabold',
+          'mt-6 w-full bg-gold text-royal-night font-sans text-[14px] font-extrabold',
           'rounded-[12px] py-4 transition-all duration-200 focus:outline-none',
-          'focus-visible:ring-2 focus-visible:ring-[#9F2B68] focus-visible:ring-offset-2',
+          'focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2',
           'focus-visible:ring-offset-white',
           loading
             ? 'opacity-60 cursor-not-allowed'
@@ -200,3 +200,5 @@ export default function DetailsStep({
     </div>
   )
 }
+
+

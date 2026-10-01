@@ -90,7 +90,7 @@ export default function DisciplineStep({ data, onChange, onNext, onBack }: Props
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden>
                       <path
                         d="M1.5 5L4 7.5L8.5 2.5"
-                        stroke="#0D1B3D"
+                        stroke="var(--royal-night)"
                         strokeWidth="1.8"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -132,3 +132,5 @@ export default function DisciplineStep({ data, onChange, onNext, onBack }: Props
     </div>
   )
 }
+
+

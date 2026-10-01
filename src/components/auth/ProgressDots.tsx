@@ -48,3 +48,5 @@ export default function ProgressDots({ total, current, labels }: Props) {
     </div>
   )
 }
+
+

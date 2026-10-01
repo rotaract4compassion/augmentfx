@@ -197,3 +197,4 @@ function PrepItem({ light, icon, title, text }: { light: boolean; icon: React.Re
 function Spinner({ light }: { light: boolean }) {
   return <div className={cn('flex min-h-[55vh] items-center justify-center', light ? 'bg-[#F7F9FC]' : 'bg-[#07152F]')}><div className={cn('h-6 w-6 animate-spin rounded-full border-2 border-t-transparent', light ? 'border-[#1769AA]' : 'border-[#F8BE22]')} /></div>
 }
+

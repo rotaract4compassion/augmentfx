@@ -1,73 +1,62 @@
-import { SITE } from '@/config/site'
-import { formatTShCompact } from '@/lib/utils'
+'use client'
 
-const STATS = [
-  { value: formatTShCompact(18_000_000), label: 'Target' },
-  { value: '2,400+',                     label: 'Patients served' },
-]
+import Link from 'next/link'
+import { motion, useReducedMotion } from 'framer-motion'
+import { SITE } from '@/config/site'
 
 export default function ImpactSection() {
+  const prefersReducedMotion = useReducedMotion()
+
   return (
-    <section
-      className="relative overflow-hidden px-5 pt-12 pb-12"
-      style={{
-        backgroundImage: "linear-gradient(rgba(7,22,48,.82), rgba(7,22,48,.9)), url('/assets/landing/pexels-mikhail-nilov-8542538.jpg')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'scroll',
-      }}
-    >
+    <section className="relative px-5 py-24 lg:px-12 xl:px-16 bg-royal-deep text-white overflow-hidden">
+      
+      {/* Background Graphic */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-royal opacity-50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
 
-      {/* Radial bronze glow — top right */}
-      <div
-        className="absolute -top-12 -right-12 w-44 h-44 rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(200,149,60,.10) 0%, transparent 70%)' }}
-      />
-
-      {/* Section label */}
-      <p className="relative font-sans text-[10px] font-bold text-bronze uppercase tracking-[.07em] mb-4">
-        Why it matters
-      </p>
-
-      {/* Headline — Playfair italic */}
-      <h2 className="relative font-serif text-section font-bold italic text-white leading-[1.2] tracking-tight mb-4">
-        Every stroke.<br />Every pedal.<br />Every step. Counts.
-      </h2>
-
-      {/* Body — Montserrat */}
-      <p className="relative font-sans text-body-sm text-white/50 leading-[1.65] mb-7">
-        All proceeds go to {SITE.beneficiary.name} — the only public cancer hospital
-        in Tanzania. Your entry funds treatment for patients who cannot afford it.
-      </p>
-
-      {/* Stats — Jakarta Sans */}
-      <div className="relative flex gap-2.5 mb-7">
-        {STATS.map(s => (
-          <div
-            key={s.label}
-            className="flex-1 bg-white/5 border border-bronze/15 rounded-card px-2.5 py-4 text-center"
-          >
-            <div className="font-num text-[22px] font-black text-bronze leading-none tracking-tight mb-1">
-              {s.value}
-            </div>
-            <div className="font-sans text-[9px] font-bold text-white/30 uppercase tracking-[.08em]">
-              {s.label}
-            </div>
+      <div className="max-w-wide mx-auto pl-8 sm:pl-12 relative z-10 flex flex-col md:flex-row items-center gap-16">
+        
+        {/* Content */}
+        <div className="flex-1 max-w-xl">
+          <div className="flex items-center gap-4 mb-4">
+            <p className="font-sans text-label text-gold uppercase tracking-widest">The Cause</p>
+            
+            {/* Shimmering Ribbon Indicator */}
+            <motion.div 
+              className="w-4 h-4 rounded-full"
+              animate={prefersReducedMotion ? false : {
+                backgroundColor: ['#E85D75', '#F7A81B', '#E85D75']
+              }}
+              transition={{ duration: 4, ease: "linear", repeat: Infinity }}
+              style={{ backgroundColor: '#E85D75' }} // Ribbon color
+            />
           </div>
-        ))}
+
+          <h2 className="font-display text-section uppercase text-cream leading-[0.9] tracking-tight mb-8">
+            Every effort <br className="hidden sm:block"/>counts.
+          </h2>
+
+          <p className="font-sans text-body-lg text-white/80 leading-[1.65] mb-8">
+            {SITE.cause.line} Your participation directly supports access to life-saving treatment for those who need it most. 
+          </p>
+
+          <Link
+            href="/donate"
+            className="inline-block border-2 border-gold text-gold hover:bg-gold hover:text-royal-night px-8 py-4 rounded-pill font-sans font-bold text-[13px] uppercase tracking-wider transition-colors"
+          >
+            Support a participant
+          </Link>
+        </div>
+
+        {/* Dignified Local Photo (Placeholder until real photos) */}
+        <div className="flex-1 w-full max-w-md duotone">
+          <img 
+            src="https://placehold.co/600x800/17458F/F8F5F0?text=Consented+Local+Photo+TBC" 
+            alt="Cancer care support" 
+            className="w-full h-auto shadow-[0_20px_60px_rgba(8,27,63,0.6)]"
+          />
+        </div>
+
       </div>
-
-      {/* CTA */}
-      <button
-        type="button"
-        className="relative w-full py-4 bg-coral text-white rounded-button
-                   font-sans text-body-sm font-bold
-                   hover:bg-coral-dark active:scale-[.98] transition-all duration-200
-                   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
-      >
-        Register & change lives
-      </button>
-
     </section>
   )
 }

@@ -166,3 +166,4 @@ function InfoRow({ label, value, capitalize, last }: { label: string; value: str
 function Spinner() {
   return <div className="flex min-h-[50vh] items-center justify-center"><div className="h-5 w-5 animate-spin rounded-full border-2 border-[#2456a6] border-t-transparent" /></div>
 }
+

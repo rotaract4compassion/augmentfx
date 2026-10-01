@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { Bell, Heart, Home, LogOut, Ticket, User, Bike, Moon, Sun, Check } from 'lucide-react'
@@ -31,12 +32,18 @@ export function DesktopNav() {
       <header
         className={cn(
           'fixed inset-x-0 top-0 z-50 flex h-[72px] items-center justify-between border-b px-6 transition-colors lg:px-8',
-          light ? 'border-navy/10 bg-white' : 'border-white/[.07] bg-[#091631]/95',
+          light ? 'border-royal-night/10 bg-white' : 'border-white/[.07] bg-[#091631]/95',
         )}
       >
         <Link href="/dashboard" className="flex items-center gap-3">
           <div className="relative h-12 w-[148px] shrink-0">
-            <img src="/assets/auth/tour-de-rotary-mark.png" alt="Tour de Rotary Dar es Salaam" className="h-full w-full object-contain object-left" />
+            <Image 
+              src="/assets/auth/tour-de-rotary-mark.png" 
+              alt="Tour de Rotary Dar es Salaam" 
+              fill
+              priority
+              className="object-contain object-left" 
+            />
           </div>
         </Link>
 
@@ -44,12 +51,12 @@ export function DesktopNav() {
           <button
             type="button"
             aria-label="Notifications"
-            className={cn('relative rounded-full p-2 transition', light ? 'text-navy/65 hover:bg-navy/5 hover:text-navy' : 'text-white/65 hover:bg-white/5 hover:text-white')}
+            className={cn('relative rounded-full p-2 transition', light ? 'text-royal-night/65 hover:bg-royal-night/5 hover:text-royal-night' : 'text-white/65 hover:bg-white/5 hover:text-white')}
           >
             <Bell size={19} strokeWidth={1.7} />
             <span className="absolute right-1.5 top-1.5 h-1.5 w-1.5 rounded-full bg-[#B12A70]" />
           </button>
-          <div className={cn('hidden h-7 w-px sm:block', light ? 'bg-navy/10' : 'bg-white/10')} />
+          <div className={cn('hidden h-7 w-px sm:block', light ? 'bg-royal-night/10' : 'bg-white/10')} />
           <div className="relative">
             <button
               type="button"
@@ -59,7 +66,7 @@ export function DesktopNav() {
               title="Appearance"
               className={cn(
                 'rounded-full p-2 transition',
-                light ? 'text-navy/55 hover:bg-navy/5 hover:text-navy' : 'text-white/65 hover:bg-white/5 hover:text-white',
+                light ? 'text-royal-night/55 hover:bg-royal-night/5 hover:text-royal-night' : 'text-white/65 hover:bg-white/5 hover:text-white',
               )}
             >
               {light ? <Moon size={18} strokeWidth={1.8} /> : <Sun size={18} strokeWidth={1.8} />}
@@ -67,13 +74,13 @@ export function DesktopNav() {
             {appearanceOpen && (
               <div className={cn(
                 'absolute right-0 top-11 w-44 rounded-[14px] border p-2 shadow-card-lg',
-                light ? 'border-navy/10 bg-white' : 'border-white/10 bg-[#0d1b3d]',
+                light ? 'border-royal-night/10 bg-white' : 'border-white/10 bg-[#0d1b3d]',
               )}>
-                <p className={cn('px-2 py-1.5 font-num text-[9px] font-extrabold uppercase tracking-[.12em]', light ? 'text-navy/35' : 'text-white/35')}>Appearance</p>
+                <p className={cn('px-2 py-1.5 font-num text-[9px] font-extrabold uppercase tracking-[.12em]', light ? 'text-royal-night/35' : 'text-white/35')}>Appearance</p>
                 <button
                   type="button"
                   onClick={() => { setTheme('light'); setAppearanceOpen(false) }}
-                  className={cn('flex w-full items-center justify-between rounded-[9px] px-2.5 py-2 text-left font-sans text-[11px] font-semibold', light ? 'bg-navy/[.05] text-navy' : 'text-white/70 hover:bg-white/[.05]')}
+                  className={cn('flex w-full items-center justify-between rounded-[9px] px-2.5 py-2 text-left font-sans text-[11px] font-semibold', light ? 'bg-royal-night/[.05] text-royal-night' : 'text-white/70 hover:bg-white/[.05]')}
                 >
                   <span className="flex items-center gap-2"><Sun size={15} /> Light mode</span>
                   {light && <Check size={14} className="text-[#1769AA]" />}
@@ -81,19 +88,19 @@ export function DesktopNav() {
                 <button
                   type="button"
                   onClick={() => { setTheme('dark'); setAppearanceOpen(false) }}
-                  className={cn('mt-1 flex w-full items-center justify-between rounded-[9px] px-2.5 py-2 text-left font-sans text-[11px] font-semibold', !light ? 'bg-white/[.06] text-white' : 'text-navy/65 hover:bg-navy/[.05]')}
+                  className={cn('mt-1 flex w-full items-center justify-between rounded-[9px] px-2.5 py-2 text-left font-sans text-[11px] font-semibold', !light ? 'bg-white/[.06] text-white' : 'text-royal-night/65 hover:bg-royal-night/[.05]')}
                 >
                   <span className="flex items-center gap-2"><Moon size={15} /> Dark mode</span>
-                  {!light && <Check size={14} className="text-bronze" />}
+                  {!light && <Check size={14} className="text-gold" />}
                 </button>
               </div>
             )}
           </div>
           <div className="flex items-center gap-2.5">
-            <div className={cn('flex h-9 w-9 items-center justify-center rounded-full border font-num text-[12px] font-extrabold', light ? 'border-navy/10 bg-[#EAF1F8] text-navy' : 'border-bronze/30 bg-bronze/10 text-bronze')}>
+            <div className={cn('flex h-9 w-9 items-center justify-center rounded-full border font-num text-[12px] font-extrabold', light ? 'border-royal-night/10 bg-[#EAF1F8] text-royal-night' : 'border-gold/30 bg-gold/10 text-gold')}>
               {initial}
             </div>
-            <span className={cn('hidden font-sans text-[12px] font-semibold sm:block', light ? 'text-navy' : 'text-white/80')}>
+            <span className={cn('hidden font-sans text-[12px] font-semibold sm:block', light ? 'text-royal-night' : 'text-white/80')}>
               {profile?.full_name?.split(' ')[0] ?? 'Athlete'}
             </span>
           </div>
@@ -101,7 +108,7 @@ export function DesktopNav() {
             type="button"
             onClick={() => void signOut()}
             aria-label="Sign out"
-            className={cn('rounded-full p-2 transition', light ? 'text-navy/50 hover:bg-navy/5 hover:text-navy' : 'text-white/35 hover:bg-white/5 hover:text-white')}
+            className={cn('rounded-full p-2 transition', light ? 'text-royal-night/50 hover:bg-royal-night/5 hover:text-royal-night' : 'text-white/35 hover:bg-white/5 hover:text-white')}
           >
             <LogOut size={17} strokeWidth={1.7} />
           </button>
@@ -111,10 +118,10 @@ export function DesktopNav() {
       <aside
         className={cn(
           'fixed bottom-0 left-0 top-[72px] z-40 hidden w-[228px] flex-col border-r px-5 py-7 lg:flex',
-          light ? 'border-navy/10 bg-white' : 'border-white/[.06] bg-[#091631]/95',
+          light ? 'border-royal-night/10 bg-white' : 'border-white/[.06] bg-[#091631]/95',
         )}
       >
-        <p className={cn('px-3 pb-3 font-num text-[9px] font-extrabold uppercase tracking-[.12em]', light ? 'text-navy/35' : 'text-white/25')}>
+        <p className={cn('px-3 pb-3 font-num text-[9px] font-extrabold uppercase tracking-[.12em]', light ? 'text-royal-night/35' : 'text-white/25')}>
           Participant portal
         </p>
         <nav className="space-y-1" aria-label="Participant navigation">
@@ -130,9 +137,9 @@ export function DesktopNav() {
                   light
                     ? active
                       ? 'bg-[#E6F0FA] text-[#1769AA]'
-                      : 'text-navy/55 hover:bg-navy/[.04] hover:text-navy'
+                      : 'text-royal-night/55 hover:bg-royal-night/[.04] hover:text-royal-night'
                     : active
-                      ? 'bg-bronze text-white shadow-[0_8px_24px_rgba(200,149,60,.16)]'
+                      ? 'bg-gold text-white shadow-[0_8px_24px_rgba(200,149,60,.16)]'
                       : 'text-white/50 hover:bg-white/[.05] hover:text-white',
                 )}
               >
@@ -144,15 +151,16 @@ export function DesktopNav() {
         </nav>
 
         <div className="mt-auto px-3 pb-2">
-          <p className={cn('font-serif text-[18px] italic leading-tight', light ? 'text-navy/45' : 'text-white/45')}>Stronger<br />Together.</p>
+          <p className={cn('font-serif text-[18px] italic leading-tight', light ? 'text-royal-night/45' : 'text-white/45')}>Stronger<br />Together.</p>
           <div className="mt-3 flex items-center gap-1">
             <span className="h-1 w-6 bg-[#1769AA]" />
             <span className="h-1 w-6 bg-[#B12A70]" />
             <span className="h-1 w-6 bg-[#F8BE22]" />
           </div>
-          <p className={cn('mt-3 font-num text-[9px] uppercase tracking-[.1em]', light ? 'text-navy/35' : 'text-bronze/50')}>1 November 2026</p>
+          <p className={cn('mt-3 font-num text-[9px] uppercase tracking-[.1em]', light ? 'text-royal-night/35' : 'text-gold/50')}>1 November 2026</p>
         </div>
       </aside>
     </>
   )
 }
+

@@ -1,31 +1,23 @@
 import type { Metadata, Viewport } from 'next'
-import { Playfair_Display, Montserrat, Plus_Jakarta_Sans } from 'next/font/google'
+import { Anton, Montserrat } from 'next/font/google'
 import { UserProvider } from '@/context/UserContext'
 import { SITE } from '@/config/site'
 import './globals.css'
 
-// ── Playfair Display — editorial moments only ─────────────────────────────
-const playfair = Playfair_Display({
+// ── Anton — Display & Numerals ──────────────────────────────────────────────
+const anton = Anton({
   subsets:  ['latin'],
-  variable: '--font-playfair',
+  variable: '--font-anton',
   display:  'swap',
-  weight:   ['700', '900'],
+  weight:   ['400'],
 })
 
-// ── Montserrat — all UI ───────────────────────────────────────────────────
+// ── Montserrat — UI & Body ────────────────────────────────────────────────
 const montserrat = Montserrat({
   subsets:  ['latin'],
   variable: '--font-montserrat',
   display:  'swap',
   weight:   ['400', '500', '600', '700'],
-})
-
-// ── Plus Jakarta Sans — numbers only (max weight 800) ────────────────────
-const jakarta = Plus_Jakarta_Sans({
-  subsets:  ['latin'],
-  variable: '--font-jakarta',
-  display:  'swap',
-  weight:   ['700', '800'],           // 800 = extrabold — font has no 900
 })
 
 export const metadata: Metadata = {
@@ -35,9 +27,8 @@ export const metadata: Metadata = {
   },
   description: SITE.tagline,
   keywords: [
-    'triathlon', 'Dar es Salaam', 'Tanzania',
     'charity race', 'swimming', 'cycling', 'running',
-    'Tour de Dar', 'Ocean Road Cancer Institute',
+    'Tour de Dar', 'cancer awareness',
   ],
   openGraph: {
     title:       SITE.name,
@@ -53,6 +44,14 @@ export const metadata: Metadata = {
     description: SITE.tagline,
   },
   robots: { index: true, follow: true },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: SITE.shortName,
+  },
+  formatDetection: {
+    telephone: false,
+  },
 }
 
 export const viewport: Viewport = {
@@ -60,16 +59,27 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  themeColor:   '#0D1B3D',
+  themeColor:   '#17458F', // royal
+  viewportFit:  'cover',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${montserrat.variable} ${jakarta.variable}`}
+      className={`${anton.variable} ${montserrat.variable}`}
     >
-      <body className="antialiased">
+      <body className="antialiased font-sans bg-royal text-white selection:bg-gold selection:text-royal-night">
+        {/* SVG Filter for Stencil Distress (V2 direction) */}
+        <svg style={{ position: 'absolute', width: 0, height: 0 }} aria-hidden="true">
+          <filter id="distress">
+            <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" result="noise" />
+            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 5 -2" in="noise" result="coloredNoise" />
+            <feComposite operator="in" in="SourceGraphic" in2="coloredNoise" result="composite" />
+            <feBlend mode="multiply" in="composite" in2="SourceGraphic" />
+          </filter>
+        </svg>
+        
         <UserProvider>
           {children}
         </UserProvider>
